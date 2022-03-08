@@ -6,6 +6,7 @@ class CreateRooms < ActiveRecord::Migration[6.1]
       r.string :room_type
       r.integer :price
       r.integer :hotel_id
+      r.string :imgUrl
     end
   end
 end

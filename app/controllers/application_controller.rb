@@ -1,3 +1,4 @@
+require 'pry'
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
@@ -8,6 +9,20 @@ class ApplicationController < Sinatra::Base
 
   get '/rooms/:id' do
     room = Room.find(params[:id])
+    room.to_json
+  end
+
+  patch '/rooms/:id' do 
+    room = Room.find(params[:id])
+    room.update(
+      reserved: params[:reserved]
+    )
+    room.to_json
+  end
+
+  delete '/rooms/:id' do
+    room = Room.find(params[:id])
+    room.destroy
     room.to_json
   end
 

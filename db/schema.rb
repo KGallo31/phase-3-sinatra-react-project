@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_160955) do
     t.string "room_type"
     t.integer "price"
     t.integer "hotel_id"
+    t.string "imgUrl"
   end
 
 end
