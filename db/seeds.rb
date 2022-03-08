@@ -15,7 +15,7 @@ room_types = ["Standard","Deluxe","Presidential suite","penthouse"]
 # end
 
 100.times do |r|
-    Room.create(room_number: r,reserved: false,room_type: room_types.sample,price: 200,hotel_id: Hotel.all.sample.id)
+    Room.create(room_number: r+1,reserved: false,room_type: room_types.sample,price: 200,hotel_id: Hotel.all.sample.id)
 end
 
 
