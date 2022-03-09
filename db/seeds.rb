@@ -31,5 +31,18 @@ room_types = {"Standard" => 100,"Deluxe" => 150,"Presidential Suite" => 200,"Pen
         imgUrl: room_img)
 end
 
+20.times do 
+    Guest.create(name: Faker::Name.name, email: Faker::Internet.email, phone: Faker::PhoneNumber.cell_phone)
+end
+
+special_things = ["Birthday","Anniversary","Party",""] 
+
+20.times do
+    Reservation.create(check_in: Faker::Date.forward(days: rand(1..10)),check_out: Faker::Date.forward(days: rand(11..14)),special_requests: special_things.sample,room_id: Room.all.sample.id,guest_id: Guest.all.sample.id)
+end
+
+
+Room.check_if_open
+
 
 puts "✅ Done seeding!"
