@@ -15,8 +15,15 @@ class ApplicationController < Sinatra::Base
 
   get '/rooms' do 
     rooms = Room.all
-    rooms.to_json
+    rooms.to_json(
+      include: {reservations: {only: [:check_in, :check_out, :special_requests, :guest_id, :room_id], 
+      include: {guest: {only: [:name, :email, :phone]}}
+      }}
+    )
+
   end
+
+  # , include: {guests: {only: [:name, :email, :phone]}})
 
   get '/rooms/:id' do
     room = Room.find(params[:id])
