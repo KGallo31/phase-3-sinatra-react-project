@@ -38,6 +38,26 @@ class ApplicationController < Sinatra::Base
     room.to_json
   end
 
+  post '/guests' do
+    guest = Guest.create(
+      name: params[:name],
+      email: params[:email],
+      phone: params[:phone]
+    )
+    guest.to_json
+  end
+
+  post '/reservations' do
+    reservation = Reservation.create(
+      check_in: params[:check_in],
+      check_out: params[:check_out],
+      special_requests: params[:special_requests],
+      room_id: params[:room_id],
+      guest_id: params[:guest_id]
+    )
+    reservation.to_json
+  end
+
 
 
   # get "/" do
